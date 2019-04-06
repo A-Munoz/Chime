@@ -2,7 +2,7 @@
   "name": "chime",
   "version": "1.0.0",
   "description": "Imagine RIT 2019 - NMTP Exhibit",
-  "main": "app.js",
+  "main": "./server/app.js",
   "scripts": {
     "start": "node ./server/app.js",
     "nodemon": "nodemon --watch ./server/app.js",
