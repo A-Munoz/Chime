@@ -15,7 +15,7 @@ npm start
 ### Eslint
 
 ```
-npm pretest
+npm test
 ```
 
 ### Notes
