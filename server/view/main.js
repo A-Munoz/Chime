@@ -67,7 +67,6 @@
     canvas.height = window.innerHeight;
   }
 
-  /* Audio btns */
   const onSquareClicked = song => {
     console.log("colors clicked");
     console.log(song);
