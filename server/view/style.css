@@ -11,6 +11,7 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  background-color: #303030;
 }
 
 /**
@@ -55,3 +56,29 @@ html, body {
 .color.green { background-color: green; }
 .color.blue { background-color: blue; }
 .color.yellow { background-color: yellow; }
+
+#v1 {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+#v2 {
+    position: absolute;
+    left: 380px;
+    top: 10px;
+}
+#v3 {
+    position: absolute;
+    left: 10px;
+    top: 260px;
+}
+#v4 {
+    position: absolute;
+    left: 380px;
+    top: 260px;
+}
+#v5 {
+    position: absolute;
+    left: 10px;
+    top: 510px;
+}

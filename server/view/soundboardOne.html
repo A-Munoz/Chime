@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -6,21 +6,38 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <canvas class="display hidden"></canvas>
-    <canvas class="boardOne"></canvas>
-     <video id=v width="350" height="240">
-        <source src= "https://mysound.cad.rit.edu/exhibit/animations/buttons/anim1.mp4" type= video/mp4> 
-    </video>
+      <canvas class="display hidden"></canvas>
+      <canvas class="boardOne"></canvas>
+      <video id=v1 width="350" height="240">
+          <source src="https://mysound.cad.rit.edu/exhibit/animations/buttons/Comp1.mp4" type=video/mp4>
+      </video>
+      <video id=v2 width="350" height="240">
+          <source src="https://mysound.cad.rit.edu/exhibit/animations/buttons/Comp 2.mp4" type=video/mp4>
+      </video>
+      <video id=v3 width="350" height="240">
+          <source src="https://mysound.cad.rit.edu/exhibit/animations/buttons/Comp 3.mp4" type=video/mp4>
+      </video>
+      <video id=v4 width="350" height="240">
+          <source src="https://mysound.cad.rit.edu/exhibit/animations/buttons/Comp 4.mp4" type=video/mp4>
+      </video>
+      <video id=v5 width="350" height="240">
+          <source src="https://mysound.cad.rit.edu/exhibit/animations/buttons/Comp 5.mp4" type=video/mp4>
+      </video>
 
-    <div class="colors">
-      <div id="btn1" class="color black"></div>
-      <div id="btn2" class="color red"></div>
-      <div id="btn3" class="color green"></div>
-      <div id="btn4" class="color blue"></div>
-      <div id="btn5" class="color yellow"></div>
-    </div>
 
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="main.js"></script>
+
+
+
+
+
+      <div class="colors">
+          <div id="btn1" class="color black"></div>
+          <div id="btn2" class="color red"></div>
+          <div id="btn3" class="color green"></div>
+          <div id="btn4" class="color blue"></div>
+          <div id="btn5" class="color yellow"></div>
+      </div>
+      <script src="/socket.io/socket.io.js"></script>
+      <script src="main.js"></script>
   </body>
 </html>
