@@ -7,7 +7,7 @@
 </head>
 <body>
     <video id="displayVid" style="" autoplay>
-    <source src="https://mysound.cad.rit.edu/exhibit/animations/display/stokeOne.mov" type='video/mp4; codecs="avc1.42E01E"' />
+    <source src="https://mysound.cad.rit.edu/exhibit/animations/display/displayOne.mp4" type='video/mp4; codecs="avc1.42E01E"' />
     </video>
 
   <canvas class="display" id="buffer" width="1920" height="1080"></canvas>
@@ -27,9 +27,10 @@ width = outputCanvas.width,
 height = outputCanvas.height,
 interval;
 outputCanvas.width = window.innerWidth;
-    outputCanvas.height = window.innerHeight;
- 
-function processFrame() {
+ outputCanvas.height = window.innerHeight;
+  
+ video.crossOrigin = "anonymous";
+  function processFrame() {
     buffer.drawImage(video, 0, 0);
  
         // this can be done without alphaData, except in Firefox which doesn't like it when image is bigger than the canvas
@@ -45,7 +46,7 @@ function processFrame() {
     console.log(imageData.length);
     console.log("test");
     }
- //processFrame();
+ processFrame();
 }
 
 
