@@ -11,6 +11,7 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  background-color: #303030;
 }
 
 /**
@@ -55,3 +56,112 @@ html, body {
 .color.green { background-color: green; }
 .color.blue { background-color: blue; }
 .color.yellow { background-color: yellow; }
+
+#v1 {
+    position: absolute;
+    left: 230px;
+    top: 10px;
+}
+#v2 {
+    position: absolute;
+    left: 610px;
+    top: 10px;
+}
+#v3 {
+    position: absolute;
+    left: 230px;
+    top: 260px;
+}
+#v4 {
+    position: absolute;
+    left: 610px;
+    top: 260px;
+}
+#v5 {
+    position: absolute;
+    left: 230px;
+    top: 580px;
+}
+#v6 {
+  position: absolute;
+  left: 610px;
+  top: 580px;
+}
+#v7 {
+  position: absolute;
+  left: 230px;
+  top: 830px;
+}
+#v8 {
+  position: absolute;
+  left: 610px;
+  top: 830px;
+}
+#v9 {
+  position: absolute;
+  left: 1140px;
+  top: 10px;
+}
+#v10 {
+  position: absolute;
+  left: 1510px;
+  top: 10px;
+}
+#v11 {
+  position: absolute;
+  left: 1140px;
+  top: 260px;
+}
+#v12 {
+  position: absolute;
+  left: 1510px;
+  top: 260px;
+}
+#v13 {
+  position: absolute;
+  left: 1140px;
+  top: 580px;
+}
+#v14 {
+  position: absolute;
+  left: 1510px;
+  top: 580px;
+}
+#v15 {
+  position: absolute;
+  left: 1140px;
+  top: 830px;
+}
+#v16 {
+  position: absolute;
+  left: 1510px;
+  top: 830px;
+}
+
+.ChimeLogo {
+  position: absolute;
+  left: 50px;
+  top: 430px;
+}
+
+.Rect0 {
+  position: absolute;
+  left: 200px;
+  top: 0px;
+}
+
+.Rect1 {
+  position: absolute;
+  left: 200px;
+  top: 550px;
+}
+.Rect2 {
+  position: absolute;
+  left: 1100px;
+  top: 0px;
+}
+.Rect3 {
+  position: absolute;
+  left: 1100px;
+  top: 550px;
+}
