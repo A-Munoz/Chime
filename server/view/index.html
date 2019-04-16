@@ -5,13 +5,13 @@
   <title>Socket.IO whiteboard</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <video id="displayVid" style="display: hidden" autoplay>
-    <source src="https://mysound.cad.rit.edu/exhibit/animations/display/displayOne.mp4" type='video/mp4; codecs="avc1.42E01E"' />
+<body> 
+    <video id="displayVid" style="display: none" autoplay>
+    <source src="https://mysound.cad.rit.edu/exhibit/animations/display/test.mp4" type='video/mp4' codecs="avc1.42E01E" />
     </video>
 
-  <canvas class="display" id="buffer" width="1920" height="1080"></canvas>
-  <canvas class="display" id="output" width="640" height="360"></canvas>
+  <!--<canvas class="display" id="buffer" width="1920" height="1080"></canvas>-->
+  <canvas class="display" id="output" width="1920" height="1080"></canvas>
     
   <script src="/socket.io/socket.io.js"></script>    
   <!--<script src="display.js"></script>-->
@@ -39,6 +39,7 @@ outputCanvas.width = window.innerWidth;
  
     for (var i = 3, len = imageData.length; i < len; i = i + 4) {
     imageData[i] = alphaData[i-1];
+    
     }
  
     output.putImageData(image, 0, 0, 0, 0, width, height);
@@ -48,8 +49,22 @@ outputCanvas.width = window.innerWidth;
  processFrame();
 }
 
+(function() {
+ var canvas = document.getElementById('ouput');
+ var ctx = canvas.getContext('2d');
+ var video = document.getElementById('displayVid');
 
- start();  
+video.addEventListener('play', function(){
+    var $this = this; 
+    (function loop() {
+        if(!this.ended){
+            ctx.drawImage($this,0,0);
+            setTimeout(loop,1000/30);
+        }
+    })();
+},0);
+});
+      
  </script>
 </body>
 </html>
