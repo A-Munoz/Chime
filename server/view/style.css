@@ -59,82 +59,82 @@ html, body {
 
 #v1 {
     position: absolute;
-    left: 230px;
-    top: 10px;
+    left: 290px;
+    top: 30px;
 }
 #v2 {
     position: absolute;
-    left: 610px;
-    top: 10px;
+    left: 670px;
+    top: 30px;
 }
 #v3 {
     position: absolute;
-    left: 230px;
-    top: 260px;
+    left: 290px;
+    top: 280px;
 }
 #v4 {
     position: absolute;
-    left: 610px;
-    top: 260px;
+    left: 670px;
+    top: 280px;
 }
 #v5 {
     position: absolute;
-    left: 230px;
+    left: 290px;
     top: 580px;
 }
 #v6 {
   position: absolute;
-  left: 610px;
+  left: 670px;
   top: 580px;
 }
 #v7 {
   position: absolute;
-  left: 230px;
+  left: 290px;
   top: 830px;
 }
 #v8 {
   position: absolute;
-  left: 610px;
+  left: 670px;
   top: 830px;
 }
 #v9 {
   position: absolute;
-  left: 1140px;
-  top: 10px;
+  left: 1080px;
+  top: 30px;
 }
 #v10 {
   position: absolute;
-  left: 1510px;
-  top: 10px;
+  left: 1450px;
+  top: 30px;
 }
 #v11 {
   position: absolute;
-  left: 1140px;
-  top: 260px;
+  left: 1080px;
+  top: 280px;
 }
 #v12 {
   position: absolute;
-  left: 1510px;
-  top: 260px;
+  left: 1450px;
+  top: 280px;
 }
 #v13 {
   position: absolute;
-  left: 1140px;
+  left: 1080px;
   top: 580px;
 }
 #v14 {
   position: absolute;
-  left: 1510px;
+  left: 1450px;
   top: 580px;
 }
 #v15 {
   position: absolute;
-  left: 1140px;
+  left: 1080px;
   top: 830px;
 }
 #v16 {
   position: absolute;
-  left: 1510px;
+  left: 1450px;
   top: 830px;
 }
 
@@ -146,22 +146,22 @@ html, body {
 
 .Rect0 {
   position: absolute;
-  left: 200px;
-  top: 0px;
+  left: 250px;
+  top: 10px;
 }
 
 .Rect1 {
   position: absolute;
-  left: 200px;
-  top: 550px;
+  left: 250px;
+  top: 540px;
 }
 .Rect2 {
   position: absolute;
-  left: 1100px;
-  top: 0px;
+  left: 1050px;
+  top: 10px;
 }
 .Rect3 {
   position: absolute;
-  left: 1100px;
-  top: 550px;
+  left: 1050px;
+  top: 540px;
 }
