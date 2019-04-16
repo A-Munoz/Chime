@@ -6,12 +6,12 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <video id="displayVid" style="" autoplay>
-    <source src="https://mysound.cad.rit.edu/exhibit/animations/display/strokeOne.mov" type='video/mp4; codecs="avc1.42E01E"' />
+    <video id="displayVid" style="display: none" autoplay>
+    <source src="https://mysound.cad.rit.edu/exhibit/animations/display/displayOne.mp4" type='video/mp4; codecs="avc1.42E01E"' />
     </video>
 
-  <canvas class="display" id="buffer"></canvas>
-  <canvas class="display" id="output"></canvas>
+  <canvas class="display" id="buffer" width="1920" height="1080"></canvas>
+  <canvas class="display" id="output" width="640" height="360"></canvas>
     
   <script src="/socket.io/socket.io.js"></script>    
   <!--<script src="display.js"></script>-->
@@ -22,10 +22,12 @@ var outputCanvas = document.getElementById('output'),
 output = outputCanvas.getContext('2d'),
 bufferCanvas = document.getElementById('buffer'),
 buffer = bufferCanvas.getContext('2d'),
-video = document.getElementById('video'),
+video = document.getElementById('displayVid'),
 width = outputCanvas.width,
-height = outputCanvas.height,interval;
-    
+height = outputCanvas.height,
+interval;
+outputCanvas.width = window.innerWidth;
+    outputCanvas.height = window.innerHeight;
  
 function processFrame() {
     buffer.drawImage(video, 0, 0);
@@ -40,9 +42,10 @@ function processFrame() {
     }
  
     output.putImageData(image, 0, 0, 0, 0, width, height);
-    
-    console.log(test);
+    console.log(imageData.length);
+    console.log("test");
     }
+ processFrame();
 }
 
 
