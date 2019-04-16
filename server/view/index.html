@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <video id="displayVid" style="" autoplay>
+    <video id="displayVid" style="display: hidden" autoplay>
     <source src="https://mysound.cad.rit.edu/exhibit/animations/display/displayOne.mp4" type='video/mp4; codecs="avc1.42E01E"' />
     </video>
 
@@ -28,8 +28,7 @@ height = outputCanvas.height,
 interval;
 outputCanvas.width = window.innerWidth;
  outputCanvas.height = window.innerHeight;
-  
- video.crossOrigin = "anonymous";
+
   function processFrame() {
     buffer.drawImage(video, 0, 0);
  
