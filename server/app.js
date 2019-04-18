@@ -8,6 +8,8 @@ const port = process.env.PORT || 3000;
 
 // routing
 app.use("/", express.static(`${__dirname}/view`));
+app.use("/welcome", express.static(`${__dirname}/view/welcome.html`));
+app.use("/thankyou", express.static(`${__dirname}/view/confirmationPage.html`));
 app.use("/boardOne", express.static(`${__dirname}/view/soundboardOne.html`));
 app.use("/boardTwo", express.static(`${__dirname}/view/soundboardTwo.html`));
 app.use(

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Work+Sans:400,700");
+
 /**
  * Fix user-agent
  */
@@ -12,6 +14,92 @@ body {
   margin: 0;
   padding: 0;
   background-color: #303030;
+}
+
+/* welcome Page */
+#albumImg {
+  margin: 0 auto;
+}
+#welcomeBody {
+  background-color: black;
+}
+#welcomeText {
+  position: absolute;
+  /* width: 1360px; */
+  /*height: 193px;
+  left: 280px;*/
+  margin: 0 auto;
+  top: 515px;
+  padding: 0px 200px;
+
+  font-family: "Work Sans";
+  font-size: 44px;
+  line-height: 60px;
+  text-align: center;
+  letter-spacing: 0.25px;
+
+  color: #f5f1f1;
+}
+#welcomeStartButton {
+  width: 400px;
+  font-family: "Work Sans";
+  font-size: 44px;
+  color: #f5f1f1;
+  position: absolute;
+  left: 37.66%;
+  right: 37.6%;
+  /* top: 81.48%;
+  bottom: 10.19%; */
+  top: 83.48%;
+  bottom: 8.19%;
+
+  /* orang-purp */
+  background: linear-gradient(180deg, #f136ee 0%, #fb5154 100%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: 0px;
+  border-radius: 100px;
+}
+
+/* thank you page */
+#thankyouImage {
+  margin: 0 auto;
+  position: absolute;
+  width: 640.35px;
+  height: 408.79px;
+  left: 640px;
+  top: 139px;
+}
+#thankyouHeader {
+  position: absolute;
+  width: 1172px;
+  height: 54px;
+  left: 374px;
+  top: 617px;
+  margin: 0 auto;
+
+  font-family: "Work Sans";
+  font-size: 30px;
+  line-height: 70px;
+  text-align: center;
+  letter-spacing: 0.25px;
+
+  color: #ffcc00;
+}
+#thankyouText {
+  position: absolute;
+  width: 1360px;
+  height: 193px;
+  left: 280px;
+  top: 721px;
+  margin: 0 auto;
+
+  font-family: "Work Sans";
+  font-size: 35px;
+  line-height: 70px;
+  text-align: center;
+  letter-spacing: 0.25px;
+
+  color: #f5f1f1;
 }
 
 /**

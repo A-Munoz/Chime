@@ -32,6 +32,10 @@ window.onload = function() {
   document.getElementById("my_audio").play();
 };
 
+const songEnded = () => {
+  window.location.pathname = "/thankyou";
+};
+
 //each audio element to play beat
 for (let i = 0; i < colors.length; i++) {
   if (i == 0) {
