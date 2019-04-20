@@ -1,71 +1,113 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Socket.IO whiteboard</title>
-  <link rel="stylesheet" href="style.css">
-
+    <meta charset="UTF-8">
+    <title>Socket.IO whiteboard</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body> 
-    <video id="displayVid" style="" controls width="400" height="400">
-    <source src="displayOne.mp4" type='video/mp4'/>
-    </video>
 
-  <!--<canvas class="display" id="buffer" width="1920" height="1080"></canvas>-->
-  <canvas class="display" id="output" width="1920" height="1080"></canvas>
+<body>
+
+    <div id="container"></div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/three.min.js"></script>
+    <script src="main.js"></script>
+    <script>
     
-  <script src="/socket.io/socket.io.js"></script>    
-  <!--<script src="display.js"></script>-->
-  <script>
+    const socket = io();
+    //scene Attributes
+    const WIDTH = 1920;
+    const HEIGHT = 1080;
+
+    const VIEW_ANGLE = 45;
+    const ASPECT = WIDTH / HEIGHT;
+    const NEAR = 0.1;
+    const FAR = 10000;
+
+    const container = document.querySelector('#container');
+
+    //creates webGL render,camera and scene
+    const renderer = new THREE.WebGLRenderer();
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(
+        VIEW_ANGLE,
+        ASPECT,
+        NEAR,
+        FAR
+    );
+        
+    //setting up sphere vars
+    const RADIUS = 50;
+    const SEGMENTS = 16;
+    const RINGS = 16;    
+    
+    //create sphere's material
+    const sphereMaterial = new THREE.MeshLambertMaterial({
+       color: 0xCC0000
+    });
+    
+    //creates mesh
+    const sphere = new THREE.Mesh(
+        
+        new THREE.SphereGeometry(
+            RADIUS,
+            SEGMENTS,
+            RINGS),
+        sphereMaterial);
+    
+    //move sphere to visable point on Z axis
+    sphere.position.z = -300;
+    
+    //PARTICLES
+    var pMaterial = new THREE.PointCloudMaterial({
+          color: 0xffffcc
+    });
+    var geometry = new THREE.Geometry();
+    var x,y,z;
+    _.times(1000, function(n){
+       x = (Mat.random() * 800)-400;
+       y =
+    });
+        
+    
+    //creates point light
+    const pointLight = new THREE.PointLight(0xFFFFFF);
+    
+    //set light position
+    pointLight.position.x = 10;
+    pointLight.position.y = 50;
+    pointLight.position.z = 130;
+    
+    //adds Camera
+    scene.add(camera);
+    //add to the scene
+    scene.add(pointLight);
+    //add sphere to scene
+    scene.add(sphere);
   
-function start(){
-var outputCanvas = document.getElementById('output'),
-output = outputCanvas.getContext('2d'),
-bufferCanvas = document.getElementById('buffer'),
-buffer = bufferCanvas.getContext('2d'),
-video = document.getElementById('displayVid'),
-width = outputCanvas.width,
-height = outputCanvas.height,
-interval;
-outputCanvas.width = window.innerWidth;
- outputCanvas.height = window.innerHeight;
-
-  function processFrame() {
-    buffer.drawImage(video, 0, 0);
- 
-        // this can be done without alphaData, except in Firefox which doesn't like it when image is bigger than the canvas
-    var image = buffer.getImageData(0, 0, width, height),
-    imageData = image.data,
-    alphaData = buffer.getImageData(0, height, width, height).data;
- 
-    for (var i = 3, len = imageData.length; i < len; i = i + 4) {
-    imageData[i] = alphaData[i-1];
     
-    }
- 
-    output.putImageData(image, 0, 0, 0, 0, width, height);
-    console.log(imageData.length);
-    console.log("test");
-    }
- processFrame();
-}
+    //starts render
+    renderer.setSize(WIDTH,HEIGHT);
+    
+    //attach render to DOM element
+    container.appendChild(renderer.domElement);
+    
 
-(function() {
- var canvas = document.getElementById('ouput');
- var ctx = canvas.getContext('2d');
- var video = document.getElementById('displayVid');
+    
+function update(){
 
-video.addEventListener('play', function(){
-    var $this = this; 
-    (function loop() {
-        if(!this.ended){
-            ctx.drawImage($this,0,0);
-            setTimeout(loop,1000/30);
+  // draw
+  renderer.render(scene, camera);
+
+  // set up the next call
+  requestAnimFrame(update);
         }
-    })();
-},0);
-});
-      
- </script>
+        requestAnimationFrame(update);
+    
+    </script>
+       
 </body>
+
 </html>
