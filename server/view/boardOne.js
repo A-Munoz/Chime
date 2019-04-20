@@ -1,38 +1,18 @@
 const colors = document.getElementsByTagName(`video`);
-const onSquareClicked = song => {
-  console.log("videos clicked");
-  console.log(song);
-  var audio = new Audio(song);
-  audio.play();
-};
-
-const beat1 = () => {
-  var src = $("#audio1").attr("src");
-  onSquareClicked(src);
-};
-const beat2 = () => {
-  var src = $("#audio2").attr("src");
-  onSquareClicked(src);
-};
-const beat3 = () => {
-  var src = $("#audio3").attr("src");
-  onSquareClicked(src);
-};
-const beat4 = () => {
-  var src = $("#audio4").attr("src");
-  onSquareClicked(src);
-};
-const beat5 = () => {
-  var src = $("#audio5").attr("src");
-  onSquareClicked(src);
-};
 
 // background music
 window.onload = function() {
-  document.getElementById("my_audio").play();
+  console.log(window.welcomeBtnClicked);
+  if (window.welcomeBtnClicked == false) {
+    document.getElementById("boardOneBody").style.visibility = "hidden";
+  } else {
+    document.getElementById("boardOneBody").style.visibility = "visible";
+    document.getElementById("my_audio").play();
+  }
 };
 
 const songEnded = () => {
+  window.SongEnded = true;
   window.location.pathname = "/thankyou";
 };
 
