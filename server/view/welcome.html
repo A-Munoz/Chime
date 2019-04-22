@@ -27,14 +27,24 @@
     <script>
       const socket = io();
       let welcomeBtnClicked = false;
+      let songFinished = false;
       window.onload = function() {
-        window.SongEnded = false;
-
         socket.emit("welcomeBtnClicked", welcomeBtnClicked);
+        socket.on("welcomeBtnClicked", function(welcomeBtnClick) {
+          console.log("welcomeBtnClick : " + welcomeBtnClick);
+        });
+        socket.emit("songFinished", songFinished);
+        socket.on("songFinished", function(songEnded) {
+          console.log("songEnded : " + songEnded);
+        });
       };
 
       const welcomeBtnClick = () => {
-        window.welcomeBtnClicked = true;
+        welcomeBtnClicked = true;
+        socket.emit("welcomeBtnClicked", welcomeBtnClicked);
+        socket.on("welcomeBtnClicked", function(welcomeBtnClick) {
+          console.log("welcomeBtnClicked : " + welcomeBtnClick);
+        });
       };
     </script>
   </body>

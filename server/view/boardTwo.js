@@ -1,8 +1,28 @@
 const colors = document.getElementsByTagName(`video`);
 
-if (window.SongEnded == true) {
-  window.location.pathname = "/thankyou";
-}
+const socket = io();
+let songFinishedBoardCheck;
+
+window.onload = function() {
+  document.getElementById("my_audio").play();
+};
+
+const songEnded = () => {
+  let songEnded = true;
+  socket.emit("songFinished", songEnded);
+  socket.on("songFinished", function(songFinished) {
+    console.log("boardOne song : " + songFinished);
+    songFinishedBoardCheck = songFinished;
+    if (songFinishedBoardCheck == true) {
+      window.location.pathname = "/thankyou?boardTwo=true";
+    }
+  });
+
+  // window.location.pathname = "/thankyou?boardTwo=true";
+
+  window.location.href =
+    "http://testing-chime.herokuapp.com/thankyou?boardTwo=true";
+};
 
 for (let i = 0; i < colors.length; i++) {
   if (i == 0) {

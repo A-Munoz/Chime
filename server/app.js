@@ -24,7 +24,12 @@ function onConnection(socket) {
   // Updates Display
   socket.on("drawing", data => socket.broadcast.emit("drawing", data));
   socket.on("welcomeBtnClicked", function(welcomeBtnClicked) {
-    console.log(welcomeBtnClicked);
+    console.log("welcomeBtnClicked " + welcomeBtnClicked);
+    socket.broadcast.emit("welcomeBtnClicked", welcomeBtnClicked);
+  });
+  socket.on("songFinished", function(songFinished) {
+    console.log("songFinished " + songFinished);
+    socket.broadcast.emit("songFinished", songFinished);
   });
 }
 

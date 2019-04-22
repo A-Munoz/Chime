@@ -1,16 +1,38 @@
 const colors = document.getElementsByTagName(`video`);
+const socket = io();
+let welcomeBtnClickedBoardCheck;
+let songFinishedBoardCheck;
 
+//
 window.onload = function() {
-  if (window.welcomeBtnClicked == false) {
-    document.getElementById("boardOneBody").style.visibility = "hidden";
-  } else {
-    document.getElementById("boardOneBody").style.visibility = "visible";
-  }
-};
+  //welcome button clicked
+  // socket.emit("welcomeBtnClicked");
+  socket.on("welcomeBtnClicked", function(welcomeBtnClicked) {
+    console.log("boardThree : " + welcomeBtnClicked);
+    welcomeBtnClickedBoardCheck = welcomeBtnClicked;
+    console.log("welcome btn from sockets : " + welcomeBtnClicked);
+    if (welcomeBtnClickedBoardCheck == false) {
+      document.getElementById("boardThreeBody").style.visibility = "hidden";
+    } else {
+      document.getElementById("boardThreeBody").style.visibility = "visible";
+    }
+  });
 
-if (window.SongEnded == true) {
-  window.location.pathname = "/thankyou";
-}
+  //music ended
+  // socket.emit("songFinished");
+  socket.on("songFinished", function(songFinished) {
+    console.log("boardThree song : " + songFinished);
+    songFinishedBoardCheck = songFinished;
+    if (songFinishedBoardCheck == false) {
+      //dont do anything
+    } else {
+      // window.location.pathname = "/thankyou?boardThree=true";
+      // else move onto the thank you page
+      window.location.href =
+        "http://testing-chime.herokuapp.com/thankyou?boardThree=true";
+    }
+  });
+};
 
 for (let i = 0; i < colors.length; i++) {
   if (i == 0) {
