@@ -11,6 +11,7 @@ window.onload = function() {
     console.log("boardThree : " + welcomeBtnClicked);
     welcomeBtnClickedBoardCheck = welcomeBtnClicked;
     console.log("welcome btn from sockets : " + welcomeBtnClicked);
+    // socket.broadcast.emit("welcomeBtnClicked", welcomeBtnClicked);
     if (welcomeBtnClickedBoardCheck == false) {
       document.getElementById("boardThreeBody").style.visibility = "hidden";
     } else {
@@ -24,12 +25,9 @@ window.onload = function() {
     console.log("boardThree song : " + songFinished);
     songFinishedBoardCheck = songFinished;
     if (songFinishedBoardCheck == false) {
-      //dont do anything
+      //do nothing
     } else {
-      // window.location.pathname = "/thankyou?boardThree=true";
-      // else move onto the thank you page
-      window.location.href =
-        "http://testing-chime.herokuapp.com/thankyou?boardThree=true";
+      window.location.href = "/thankyou?boardThree=true";
     }
   });
 };

@@ -24,6 +24,7 @@ body {
 /* welcome Page */
 #albumImg {
   margin: 0 auto;
+  padding-left: 78px;
 }
 #welcomeBody {
   background-color: black;
@@ -51,12 +52,13 @@ body {
   font-size: 44px;
   color: #f5f1f1;
   position: absolute;
-  left: 37.66%;
+  left: 39.5%;
   right: 37.6%;
   /* top: 81.48%;
   bottom: 10.19%; */
   top: 83.48%;
   bottom: 8.19%;
+  margin-left: 60px;
 
   /* orang-purp */
   background: linear-gradient(180deg, #f136ee 0%, #fb5154 100%);

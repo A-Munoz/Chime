@@ -3,7 +3,7 @@ const socket = io();
 let welcomeBtnClickedBoardCheck;
 let songFinishedBoardCheck;
 
-// background music
+//
 window.onload = function() {
   //welcome btn pressed
   // socket.emit("welcomeBtnClicked");
@@ -12,13 +12,14 @@ window.onload = function() {
     welcomeBtnClickedBoardCheck = welcomeBtnClicked;
     console.log("welcome btn from sockets : " + welcomeBtnClicked);
     if (welcomeBtnClickedBoardCheck == false) {
+      window.welcomeBtnClicked = false;
       document.getElementById("boardOneBody").style.visibility = "hidden";
     } else {
+      window.welcomeBtnClicked = true;
       document.getElementById("boardOneBody").style.visibility = "visible";
     }
   });
 
-  //music ended
   // socket.emit("songFinished");
   socket.on("songFinished", function(songFinished) {
     console.log("boardOne song : " + songFinished);
@@ -26,12 +27,16 @@ window.onload = function() {
     if (songFinishedBoardCheck == false) {
       //dont do anything
     } else {
-      // window.location.pathname = "/thankyou?boardone=true";
-      // else move onto the thank you page
-      window.location.href =
-        "http://testing-chime.herokuapp.com/thankyou?boardOne=true";
+      // window.songFinished = true;
+      console.log("boardOne if song");
+      window.location.href = "/thankyou?boardOne=true";
+      // window.songFinished = true;
+      // window.location.href =
+      //   "http://testing-chime.herokuapp.com/thankyou?boardOne=true";
     }
   });
+
+  console.log("welcome btn log2 : " + window.welcomeBtnClicked);
 };
 
 //each audio element to play beat
