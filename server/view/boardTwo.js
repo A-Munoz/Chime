@@ -1,30 +1,29 @@
 const colors = document.getElementsByTagName(`video`);
-const onSquareClicked = song => {
-  console.log("videos clicked");
-  console.log(song);
-  var audio = new Audio(song);
-  audio.play();
+
+const socket = io();
+let songFinishedBoardCheck;
+
+window.onload = function() {
+  //prevent right click
+  document.addEventListener("contextmenu", event => event.preventDefault());
+  document.getElementById("my_audio").play();
 };
 
-const beat1 = () => {
-  var src = $("#audio1").attr("src");
-  onSquareClicked(src);
-};
-const beat2 = () => {
-  var src = $("#audio2").attr("src");
-  onSquareClicked(src);
-};
-const beat3 = () => {
-  var src = $("#audio3").attr("src");
-  onSquareClicked(src);
-};
-const beat4 = () => {
-  var src = $("#audio4").attr("src");
-  onSquareClicked(src);
-};
-const beat5 = () => {
-  var src = $("#audio5").attr("src");
-  onSquareClicked(src);
+const songEnded = () => {
+  let songEnded = true;
+  socket.emit("songFinished", songEnded);
+  socket.on("songFinished", function(songFinished) {
+    console.log("boardtwo song : " + songFinished);
+    songFinishedBoardCheck = songFinished;
+    if (songFinishedBoardCheck == true) {
+      window.location.href = "/thankyou?boardTwo=true";
+    }
+  });
+
+  window.location.href = "/thankyou?boardTwo=true";
+
+  // window.location.href =
+  //   "http://testing-chime.herokuapp.com/thankyou?boardTwo=true";
 };
 
 for (let i = 0; i < colors.length; i++) {
@@ -36,7 +35,7 @@ for (let i = 0; i < colors.length; i++) {
     // document.getElementById("v1").appendChild(x);
     colors[i].addEventListener("click", function() {
       var audio = new Audio(
-        "https://people.rit.edu/amm4833/exhibit/music/blueOne.wav"
+        "https://mysound.cad.rit.edu/exhibit/animations/music/boardTwoMusic/1.wav"
       );
       audio.play();
     });
@@ -48,7 +47,7 @@ for (let i = 0; i < colors.length; i++) {
     // document.getElementById("v2").appendChild(x);
     colors[i].addEventListener("click", function() {
       var audio = new Audio(
-        "https://people.rit.edu/amm4833/exhibit/music/blueTwo.wav"
+        "https://mysound.cad.rit.edu/exhibit/animations/music/boardTwoMusic/2.wav"
       );
       audio.play();
     });
@@ -60,7 +59,7 @@ for (let i = 0; i < colors.length; i++) {
     // document.getElementById("v3").appendChild(x);
     colors[i].addEventListener("click", function() {
       var audio = new Audio(
-        "https://people.rit.edu/amm4833/exhibit/music/blueThree.wav"
+       "https://mysound.cad.rit.edu/exhibit/animations/music/boardTwoMusic/3.wav"
       );
       audio.play();
     });
@@ -72,7 +71,7 @@ for (let i = 0; i < colors.length; i++) {
     // document.getElementById("v4").appendChild(x);
     colors[i].addEventListener("click", function() {
       var audio = new Audio(
-        "https://people.rit.edu/amm4833/exhibit/music/blueFour.wav"
+       "https://mysound.cad.rit.edu/exhibit/animations/music/boardTwoMusic/4.wav"
       );
       audio.play();
     });
@@ -84,7 +83,7 @@ for (let i = 0; i < colors.length; i++) {
     // document.getElementById("v5").appendChild(x);
     colors[i].addEventListener("click", function() {
       var audio = new Audio(
-        "https://people.rit.edu/amm4833/exhibit/music/greenOne.wav"
+        "https://mysound.cad.rit.edu/exhibit/animations/music/boardTwoMusic/5.wav"
       );
       audio.play();
     });
@@ -96,7 +95,7 @@ for (let i = 0; i < colors.length; i++) {
     // document.getElementById("v5").appendChild(x);
     colors[i].addEventListener("click", function() {
       var audio = new Audio(
-        "https://people.rit.edu/amm4833/exhibit/music/greenTwo.wav"
+       "https://mysound.cad.rit.edu/exhibit/animations/music/boardTwoMusic/6.wav"
       );
       audio.play();
     });
@@ -108,7 +107,7 @@ for (let i = 0; i < colors.length; i++) {
     // document.getElementById("v5").appendChild(x);
     colors[i].addEventListener("click", function() {
       var audio = new Audio(
-        "https://people.rit.edu/amm4833/exhibit/music/greenThree.wav"
+       "https://mysound.cad.rit.edu/exhibit/animations/music/boardTwoMusic/7.wav"
       );
       audio.play();
     });
@@ -120,7 +119,7 @@ for (let i = 0; i < colors.length; i++) {
     // document.getElementById("v5").appendChild(x);
     colors[i].addEventListener("click", function() {
       var audio = new Audio(
-        "https://people.rit.edu/amm4833/exhibit/music/greenFour.wav"
+       "https://mysound.cad.rit.edu/exhibit/animations/music/boardTwoMusic/8.wav"
       );
       audio.play();
     });
@@ -132,7 +131,7 @@ for (let i = 0; i < colors.length; i++) {
     // document.getElementById("v5").appendChild(x);
     colors[i].addEventListener("click", function() {
       var audio = new Audio(
-        "https://people.rit.edu/amm4833/exhibit/music/redOne.wav"
+        "https://mysound.cad.rit.edu/exhibit/animations/music/boardTwoMusic/9.wav"
       );
       audio.play();
     });
@@ -144,7 +143,7 @@ for (let i = 0; i < colors.length; i++) {
     // document.getElementById("v5").appendChild(x);
     colors[i].addEventListener("click", function() {
       var audio = new Audio(
-        "https://people.rit.edu/amm4833/exhibit/music/redTwo.wav"
+       "https://mysound.cad.rit.edu/exhibit/animations/music/boardTwoMusic/10.wav"
       );
       audio.play();
     });
@@ -156,7 +155,7 @@ for (let i = 0; i < colors.length; i++) {
     // document.getElementById("v5").appendChild(x);
     colors[i].addEventListener("click", function() {
       var audio = new Audio(
-        "https://people.rit.edu/amm4833/exhibit/music/redThree.wav"
+        "https://mysound.cad.rit.edu/exhibit/animations/music/boardTwoMusic/11.wav"
       );
       audio.play();
     });
@@ -168,7 +167,7 @@ for (let i = 0; i < colors.length; i++) {
     // document.getElementById("v5").appendChild(x);
     colors[i].addEventListener("click", function() {
       var audio = new Audio(
-        "https://people.rit.edu/amm4833/exhibit/music/redFour.wav"
+        "https://mysound.cad.rit.edu/exhibit/animations/music/boardTwoMusic/12.wav"
       );
       audio.play();
     });
@@ -180,7 +179,7 @@ for (let i = 0; i < colors.length; i++) {
     // document.getElementById("v5").appendChild(x);
     colors[i].addEventListener("click", function() {
       var audio = new Audio(
-        "https://people.rit.edu/amm4833/exhibit/music/yellowOne.wav"
+        "https://mysound.cad.rit.edu/exhibit/animations/music/boardTwoMusic/13.wav"
       );
       audio.play();
     });
@@ -192,7 +191,7 @@ for (let i = 0; i < colors.length; i++) {
     // document.getElementById("v5").appendChild(x);
     colors[i].addEventListener("click", function() {
       var audio = new Audio(
-        "https://people.rit.edu/amm4833/exhibit/music/yellowTwo.wav"
+       "https://mysound.cad.rit.edu/exhibit/animations/music/boardTwoMusic/14.wav"
       );
       audio.play();
     });
@@ -204,7 +203,7 @@ for (let i = 0; i < colors.length; i++) {
     // document.getElementById("v5").appendChild(x);
     colors[i].addEventListener("click", function() {
       var audio = new Audio(
-        "https://people.rit.edu/amm4833/exhibit/music/yellowThree.wav"
+        "https://mysound.cad.rit.edu/exhibit/animations/music/boardTwoMusic/15.wav"
       );
       audio.play();
     });
@@ -216,7 +215,7 @@ for (let i = 0; i < colors.length; i++) {
     // document.getElementById("v5").appendChild(x);
     colors[i].addEventListener("click", function() {
       var audio = new Audio(
-        "https://people.rit.edu/amm4833/exhibit/music/yellowFour.wav"
+        "https://mysound.cad.rit.edu/exhibit/animations/music/boardTwoMusic/16.wav"
       );
       audio.play();
     });

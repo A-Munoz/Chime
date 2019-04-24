@@ -12,6 +12,9 @@
   };
   let drawing = false;
 
+  //prevent right click
+  document.addEventListener("contextmenu", event => event.preventDefault());
+
   for (let i = 0; i < colors.length; i++) {
     colors[i].addEventListener("click", onColorUpdate, false);
   }
@@ -20,7 +23,7 @@
 
   window.addEventListener("resize", onResize, false);
   onResize();
-  boardOne.addEventListener("mousedown", onMouseDown, false);
+  window.addEventListener("mousedown", onMouseDown, false);
 
   function onColorUpdate(e) {
     current.color = e.target.className.split(" ")[1];
@@ -28,8 +31,7 @@
 
   function onMouseDown(e) {
     drawing = true;
-    draw(current.color, true);
-    console.log("click");
+   socket.emit("drawing", drawing;
   }
   function draw(color, emit) {
     const ctx = canvas.getContext("2d");
