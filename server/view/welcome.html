@@ -27,7 +27,7 @@
     <!-- <script src="main.js"></script> -->
     <script>
         const socket = io();
-        let songFinished = false;
+        let welcomeBtnClicked = false;
         window.onload = function() {
             //prevent right click
             document.addEventListener("contextmenu", event =>
@@ -38,16 +38,14 @@
             socket.on("welcomeBtnClicked", function(welcomeBtnClick) {
                 console.log("welcomeBtnClick : " + welcomeBtnClick);
             });
-            socket.emit("songFinished", songFinished);
-            socket.on("songFinished", function(songEnded) {
-                console.log("songEnded : " + songEnded);
-            });
         };
 
         const welcomeBtnClick = () => {
-
-            socket.emit("welcomeBtnClicked");
-
+            welcomeBtnClicked = true;
+            socket.emit("welcomeBtnClicked", welcomeBtnClicked);
+            socket.on("welcomeBtnClicked", function(welcomeBtnClick) {
+                console.log("welcomeBtnClicked : " + welcomeBtnClick);
+            });
         };
 
     </script>

@@ -8,52 +8,25 @@
 </head>
 
 <body>
-    <audio id="audio1" onended="songEnded()">
-        <source src="https://mysound.cad.rit.edu/exhibit/animations/music/backgroundMusic/BackTrackOne.mp3">
-    </audio>
-    <audio id="audio2" onended="songEnded()" >
-        <source src="https://mysound.cad.rit.edu/exhibit/animations/music/backgroundMusic/BackTrackTwo.mp3">
-    </audio>
-    <audio id="audio3" onended="songEnded()">
-        <source src="https://mysound.cad.rit.edu/exhibit/animations/music/backgroundMusic/BackTrackThree.mp3">
-    </audio>
-    <audio id="audio4" onended="songEnded()">
-        <source src="https://mysound.cad.rit.edu/exhibit/animations/music/backgroundMusic/BackTrackFour.mp3">
-    </audio>
     <video id="display1" class="display" width="1920" height="1080">
         <source src="https://mysound.cad.rit.edu/exhibit/animations/display/displayOne.webm">
     </video>
-    <video id="display2" class="display" width="1920" height="1080" src="https://mysound.cad.rit.edu/exhibit/animations/display/displayOne.webm">
+    <video id="display2" class="display" width="1920" height="1080" src="https://mysound.cad.rit.edu/exhibit/animations/display/displayTwo.webm">
     </video>
-    <video id="display3" class="display" width="1920" height="1080" src="https://mysound.cad.rit.edu/exhibit/animations/display/displayOne.webm">
+    <video id="display3" class="display" width="1920" height="1080" src="https://mysound.cad.rit.edu/exhibit/animations/display/displayThree.webm">
     </video>
-    <video id="display4" class="display" width="1920" height="1080" src="https://mysound.cad.rit.edu/exhibit/animations/display/displayOne.webm">
+    <video id="display4" class="display" width="1920" height="1080" src="https://mysound.cad.rit.edu/exhibit/animations/display/displayFour.webm">
     </video>
     <video id="display5" class="display" width="1920" height="1080">;
-        <source src="https://mysound.cad.rit.edu/exhibit/animations/display/displayOne.webm">
+        <source src="https://mysound.cad.rit.edu/exhibit/animations/display/displayFive.webm">
+    </video>
+    <video id="display6" class="display" width="1920" height="1080">;
+        <source src="https://mysound.cad.rit.edu/exhibit/animations/display/displaySix.webm">
     </video>
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="main.js"></script>
     <script src="display.js"></script>
 </body>
-<script>
- const songEnded = () => {
-        let songEnded = true;
-        socket.emit("songFinished", songEnded);
-        socket.on("songFinished", function (songFinished) {
-            console.log("boardtwo song : " + songFinished);
-            songFinishedBoardCheck = songFinished;
-            if (songFinishedBoardCheck == true) {
-                window.location.href = "/thankyou?boardTwo=true";
-            }
-        });
-
-        window.location.href = "/thankyou?boardTwo=true";
-
-        // window.location.href =
-        //   "http://testing-chime.herokuapp.com/thankyou?boardTwo=true";
-    };    
-</script>
 
 </html>

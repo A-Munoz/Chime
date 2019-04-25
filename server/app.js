@@ -16,27 +16,27 @@ app.use("/thankyou", express.static(`${__dirname}/view/confirmationPage.html`));
 app.use("/boardOne", express.static(`${__dirname}/view/soundboardOne.html`));
 app.use("/boardTwo", express.static(`${__dirname}/view/soundboardTwo.html`));
 app.use(
-  "/boardThree",
-  express.static(`${__dirname}/view/soundboardThree.html`)
+    "/boardThree",
+    express.static(`${__dirname}/view/soundboardThree.html`)
 );
 
 function onConnection(socket) {
-  // Updates Display
- /* socket.on("drawing", data => socket.broadcast.emit("drawing",data));
-  /*socket.on("drawing", function(){
-      socket.broadcast.emit("drawing"));
-  });*/
-  socket.on('draw', function(){
-      socket.broadcast.emit('draw');
-  });
-  socket.on("welcomeBtnClicked", function(welcomeBtnClicked) {
-    console.log("welcomeBtnClicked " + welcomeBtnClicked);
-    socket.broadcast.emit("welcomeBtnClicked", welcomeBtnClicked);
-  });
-  socket.on("songFinished", function(songFinished) {
-    console.log("songFinished " + songFinished);
-    socket.broadcast.emit("songFinished", songFinished);
-  });
+    // Updates Display
+    socket.on('draw', function () {
+        socket.broadcast.emit('draw');
+    });
+    socket.on("welcomeBtnClicked", function (welcomeBtnClicked) {
+        if (welcomeBtnClicked === false) {
+            socket.broadcast.emit("welcomeBtnClicked", welcomeBtnClicked);
+        } else {
+            socket.broadcast.emit("welcomeBtnClicked", welcomeBtnClicked);
+            socket.broadcast.emit("songBackground");
+        }
+    });
+    socket.on("songFinished", function (songFinished) {
+        console.log("songFinished " + songFinished);
+        socket.broadcast.emit("songFinished", songFinished);
+    });
 }
 
 io.on("connection", onConnection);
