@@ -65,7 +65,7 @@
                 break;
             case '4':
                 videoPlayer = document.getElementById(
-                    'display3');
+                    'display4');
                 videoPlayer.load();
                 var playPromis = videoPlayer.play();
                 if (playPromis !== undefined) {
@@ -79,7 +79,7 @@
                 break;
             case '5':
                 videoPlayer = document.getElementById(
-                    'display3');
+                    'display5');
                 videoPlayer.load();
                 var playPromis = videoPlayer.play();
                 if (playPromis !== undefined) {
@@ -93,7 +93,7 @@
                 break;
             case '6':
                 videoPlayer = document.getElementById(
-                    'display3');
+                    'display6');
                 videoPlayer.load();
                 var playPromis = videoPlayer.play();
                 if (playPromis !== undefined) {
