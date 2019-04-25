@@ -32,7 +32,7 @@
     </div>
     <div class="videos">
         <video id="v1-mid" width="350" height="240" onclick="this.play()">
-            <source src="https://mysound.cad.rit.edu/exhibit/animations/buttons/anim1.mp4" type=video/mp4> </video> <video id="v2-mid" width="350" height="240" onclick="this.play()">
+            <source src="https://mysound.cad.rit.edu/exhibit/animations/buttons/anim1.mp4" type=video/mp4> </video> <video id="v2-mid" width="350" height="240" onclick="this.play(); emit">
             <source src="https://mysound.cad.rit.edu/exhibit/animations/buttons/anim2.mp4" type=video/mp4> </video> <video id="v3-mid" width="350" height="240" onclick="this.play()">
             <source src="https://mysound.cad.rit.edu/exhibit/animations/buttons/anim3.mp4" type=video/mp4> </video> <video id="v4-mid" width="350" height="240" onclick="this.play()">
             <source src="https://mysound.cad.rit.edu/exhibit/animations/buttons/anim4.mp4" type=video/mp4> </video> <video id="v5-mid" width="350" height="240" onclick="this.play()">
@@ -52,5 +52,11 @@
             <script src="main.js"></script>
             <script src="boardTwo.js"></script>
 </body>
+    <script>
+        function emit(){
+             socket.emit('draw');
+            console.log("html emit")
+        }
+    </script>
 
 </html>

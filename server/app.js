@@ -22,7 +22,13 @@ app.use(
 
 function onConnection(socket) {
   // Updates Display
-  socket.on("drawing", data => socket.broadcast.emit("drawing", data));
+ /* socket.on("drawing", data => socket.broadcast.emit("drawing",data));
+  /*socket.on("drawing", function(){
+      socket.broadcast.emit("drawing"));
+  });*/
+  socket.on('draw', function(){
+      socket.broadcast.emit('draw');
+  });
   socket.on("welcomeBtnClicked", function(welcomeBtnClicked) {
     console.log("welcomeBtnClicked " + welcomeBtnClicked);
     socket.broadcast.emit("welcomeBtnClicked", welcomeBtnClicked);

@@ -6,11 +6,17 @@ window.onload = function () {
     //prevent right click
     document.addEventListener("contextmenu", event => event.preventDefault());
 };
+  socket.on('draw', function(){
+      socket.broadcast.emit("draw");
+      console.log("test");
+  });
 
 
 for (let i = 0; i < colors.length; i++) {
     if (i == 0) {
         console.log(colors);
+        socket.emit('draw');
+        console.log('emit');
         // var x = document.createElement("audio");
         // x.setAttribute("src", "https://mysound.cad.rit.edu/exhibit/animations/music/blueOne.wav");
         // x.setAttribute("id", "audio1");
@@ -20,8 +26,8 @@ for (let i = 0; i < colors.length; i++) {
                 "https://mysound.cad.rit.edu/exhibit/animations/music/boardTwoMusic/1.wav"
             );
             audio.play();
+            socket.emit('draw');
         });
-        socket.emit('drawing')
     }
     if (i == 1) {
         // var x = document.createElement("audio");
@@ -34,7 +40,7 @@ for (let i = 0; i < colors.length; i++) {
             );
             audio.play();
         });
-        socket.emit('drawing');
+        socket.emit('draw');
     }
     if (i == 2) {
         // var x = document.createElement("audio");
@@ -47,7 +53,7 @@ for (let i = 0; i < colors.length; i++) {
             );
             audio.play();
         });
-        socket.emit('drawing');
+        socket.emit('draw');
     }
     if (i == 3) {
         // var x = document.createElement("audio");
@@ -60,7 +66,7 @@ for (let i = 0; i < colors.length; i++) {
             );
             audio.play();
         });
-        socket.emit('drawing');
+        socket.emit('draw');
     }
     if (i == 4) {
         // var x = document.createElement("audio");
@@ -73,7 +79,7 @@ for (let i = 0; i < colors.length; i++) {
             );
             audio.play();
         });
-        socket.emit('drawing');
+        socket.emit('draw');
     }
     if (i == 5) {
         // var x = document.createElement("audio");
@@ -86,7 +92,7 @@ for (let i = 0; i < colors.length; i++) {
             );
             audio.play();
         });
-        socket.emit('drawing');
+        socket.emit('draw');
     }
     if (i == 6) {
         // var x = document.createElement("audio");
@@ -99,7 +105,7 @@ for (let i = 0; i < colors.length; i++) {
             );
             audio.play();
         });
-        socket.emit('drawing');
+        socket.emit('draw');
     }
     if (i == 7) {
         // var x = document.createElement("audio");
@@ -112,7 +118,7 @@ for (let i = 0; i < colors.length; i++) {
             );
             audio.play();
         });
-        socket.emit('drawing');
+        socket.emit('draw');
     }
     if (i == 8) {
         // var x = document.createElement("audio");
@@ -125,7 +131,7 @@ for (let i = 0; i < colors.length; i++) {
             );
             audio.play();
         });
-        socket.emit('drawing');
+        socket.emit('draw');
     }
     if (i == 9) {
         // var x = document.createElement("audio");
@@ -138,7 +144,7 @@ for (let i = 0; i < colors.length; i++) {
             );
             audio.play();
         });
-        socket.emit('drawing');
+        socket.emit('draw');
     }
     if (i == 10) {
         // var x = document.createElement("audio");
@@ -151,7 +157,7 @@ for (let i = 0; i < colors.length; i++) {
             );
             audio.play();
         });
-        socket.emit('drawing');
+        socket.emit('draw');
     }
     if (i == 11) {
         // var x = document.createElement("audio");
@@ -164,7 +170,7 @@ for (let i = 0; i < colors.length; i++) {
             );
             audio.play();
         });
-        socket.emit('drawing');
+        socket.emit('draw');
     }
     if (i == 12) {
         // var x = document.createElement("audio");
@@ -177,7 +183,7 @@ for (let i = 0; i < colors.length; i++) {
             );
             audio.play();
         });
-        socket.emit('drawing');
+        socket.emit('draw');
     }
     if (i == 13) {
         // var x = document.createElement("audio");
@@ -190,7 +196,7 @@ for (let i = 0; i < colors.length; i++) {
             );
             audio.play();
         });
-        socket.emit('drawing');
+        socket.emit('draw');
     }
     if (i == 14) {
         // var x = document.createElement("audio");
@@ -203,7 +209,7 @@ for (let i = 0; i < colors.length; i++) {
             );
             audio.play();
         });
-        socket.emit('drawing');
+        socket.emit('draw');
     }
     if (i == 15) {
         // var x = document.createElement("audio");
@@ -216,6 +222,6 @@ for (let i = 0; i < colors.length; i++) {
             );
             audio.play();
         });
-        socket.emit('drawing');
+        socket.emit('draw');
     }
 }
