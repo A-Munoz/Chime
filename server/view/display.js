@@ -2,65 +2,110 @@
 
 (function () {
     const socket = io();
-    var outputCanvas = document.getElementById('output'),
-        canvas = document.getElementById('output'),
-        output = outputCanvas.getContext('2d'),
-        bufferCanvas = document.getElementById('buffer'),
-        buffer = bufferCanvas.getContext('2d'),
-        video = document.getElementById('displayVid'),
-        width = window.innerWidth,
-        height = window.innerHeight,
-        interval;
-    const context = canvas.getContext("2d");
+    const songArray = ['1', '2', '3', '4'];
+    const strokeArray = ['1', '2', '3'];
+    let display = strokeArray.sort(rand);
+    let playlist = songArray.sort(rand);
+    let cSong = 0;
+    let cStroke = 0;
+    let audio = new Audio("https://mysound.cad.rit.edu/exhibit/animations/music/backgroundMusic/BackTrackOne.mp3");
+    let songFinishedBoardCheck;
+    window.onload = function(){
+      socket.on("welcomeBtnClicked", startSong); 
+    //socket.on("drawing", drawStoke);  
+    };
 
+        function drawStoke() {
+            var c = display[cStroke]
+            let videoPlayer
+            switch (c) {
+                case '1':
+                  videoPlayer = document.getElementById(
+                        'display1');
+                    videoPlayer.load();
+                    videoPlayer.play();
+                    break;
+                case '2':
+                   videoPlayer = document.getElementById(
+                        'display2');
+                    videoPlayer.load();
+                    videoPlayer.play();
+                    break;
+                case '3':
+                   videoPlayer = document.getElementById(
+                        'display3');
+                    videoPlayer.load();
+                    videoPlayer.play();
+                    break;
 
-    socket.on("drawing", onDrawingEvent);
+            };
+            cStroke++;
+            if (cStroke >= display.length) {
+                cStroke = 0
+                display = strokeArray.sort(rand);
+            }
 
+        };
 
-    function processFrame() {
-        buffer.drawImage(video, 0, 0);
-
-        // this can be done without alphaData, except in Firefox which doesn't like it when image is bigger than the canvas
-        var image = buffer.getImageData(0, 0, width, height),
-            imageData = image.data,
-            alphaData = buffer.getImageData(0, height, width, height).data;
-
-        for (var i = 3, len = imageData.length; i < len; i = i + 4) {
-            imageData[i] = alphaData[i - 1];
-        }
-
-        output.putImageData(image, 0, 0, 0, 0, width, height);
-        console.log(test);
-    }
-
-    // limit the number of events per second
-    function throttle(callback, delay) {
-        let previousCall = new Date().getTime();
-        return function () {
-            const time = new Date().getTime();
-
-            if (time - previousCall >= delay) {
-                previousCall = time;
-                callback.apply(null, arguments);
+        function startSong() {
+            console.log(playlist);
+            //var c = playlist[cSong];
+            var c = 0;
+            console.log(playlist[cSong]);
+            var audio;
+           /* var audio = new Audio("https://mysound.cad.rit.edu/exhibit/animations/music/backgroundMusic/BackTrackOne.mp3");
+                    audio.play();*/
+            
+            switch (c) {
+                case '1':
+                     audio = document.getElementById('audio1');
+                    audio.play();
+                    //audio.play();
+                    break;
+                case '2':
+                     audio = new Audio("https://mysound.cad.rit.edu/exhibit/animations/music/backgroundMusic/BackTrackTwo.mp3");
+                    //audio.play();
+                    break;
+                case '3':
+                     audio = new Audio("https://mysound.cad.rit.edu/exhibit/animations/music/backgroundMusic/BackTrackThree.mp3");
+                    //audio.play();
+                    break;
+                case '4':
+                     audio = new Audio("https://mysound.cad.rit.edu/exhibit/animations/music/backgroundMusic/BackTrackFour.mp3");
+                    //audio.play();
+                    break;
+                default:
+                     audio = new Audio("https://mysound.cad.rit.edu/exhibit/animations/music/backgroundMusic/BackTrackOne.mp3");
+                    //audio.play();
+                    break;
+            };
+            audio.play();
+            cSong++;
+            if (cSong >= playlist.length) {
+                cSong = 0;
+                playlist = songArray.sort(rand);
             }
         };
-    }
 
-    function onDrawingEvent(data) {
-        const w = canvas.width;
-        const h = canvas.height;
-        const ctx = canvas.getContext("2d");
-        ctx.fillStyle = data.color;
-        ctx.fillRect(20, 20, 150, 100);
-    }
+    function rand(a, b) {
+        return 0.5 - Math.random();
+    };
 
-    // make the canvas fill its parent
-    function onResize() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
-    
-      window.addEventListener("resize", onResize, false);
-    onResize();
+    const songEnded = () => {
+        let songEnded = true;
+        socket.emit("songFinished", songEnded);
+        socket.on("songFinished", function (songFinished) {
+            console.log("boardtwo song : " + songFinished);
+            songFinishedBoardCheck = songFinished;
+            if (songFinishedBoardCheck == true) {
+                window.location.href = "/thankyou?boardTwo=true";
+            }
+        });
+
+        window.location.href = "/thankyou?boardTwo=true";
+
+        // window.location.href =
+        //   "http://testing-chime.herokuapp.com/thankyou?boardTwo=true";
+    };
 
 })();

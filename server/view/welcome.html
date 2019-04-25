@@ -1,56 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <title>Socket.IO whiteboard</title>
     <link rel="stylesheet" href="style.css" />
-  </head>
+</head>
 
-  <body id="welcomeBody">
+<body id="welcomeBody">
     <div id="albumImg">
-      <img src="assets/ChimeAlbumLogo.svg" />
+        <img src="assets/ChimeAlbumLogo.svg" />
     </div>
 
     <div id="welcomeText">
-      <p>
-        This experience was made using the voices collected over the last 12
-        weeks from the RIT community and beyond. Let’s come together to
-        celebrate the harmony in togetherness.
-      </p>
+        <p>
+            This experience was made using the voices collected over the last 12
+            weeks from the RIT community and beyond. Let’s come together to
+            celebrate the harmony in togetherness.
+        </p>
     </div>
     <form action="/boardTwo" method="GET">
-      <button id="welcomeStartButton" onclick="welcomeBtnClick()">Start</button>
+        <button id="welcomeStartButton" onclick="welcomeBtnClick()">Start</button>
     </form>
 
     <script src="/socket.io/socket.io.js"></script>
     <!-- <script src="main.js"></script> -->
     <script>
-      const socket = io();
-      let welcomeBtnClicked = false;
-      let songFinished = false;
-      window.onload = function() {
-        //prevent right click
-        document.addEventListener("contextmenu", event =>
-          event.preventDefault()
-        );
-        //sockets
-        socket.emit("welcomeBtnClicked", welcomeBtnClicked);
-        socket.on("welcomeBtnClicked", function(welcomeBtnClick) {
-          console.log("welcomeBtnClick : " + welcomeBtnClick);
-        });
-        socket.emit("songFinished", songFinished);
-        socket.on("songFinished", function(songEnded) {
-          console.log("songEnded : " + songEnded);
-        });
-      };
+        const socket = io();
+        let songFinished = false;
+        window.onload = function() {
+            //prevent right click
+            document.addEventListener("contextmenu", event =>
+                event.preventDefault()
+            );
+            //sockets
+            socket.emit("welcomeBtnClicked", welcomeBtnClicked);
+            socket.on("welcomeBtnClicked", function(welcomeBtnClick) {
+                console.log("welcomeBtnClick : " + welcomeBtnClick);
+            });
+            socket.emit("songFinished", songFinished);
+            socket.on("songFinished", function(songEnded) {
+                console.log("songEnded : " + songEnded);
+            });
+        };
 
-      const welcomeBtnClick = () => {
-        welcomeBtnClicked = true;
-        socket.emit("welcomeBtnClicked", welcomeBtnClicked);
-        socket.on("welcomeBtnClicked", function(welcomeBtnClick) {
-          console.log("welcomeBtnClicked : " + welcomeBtnClick);
-        });
-      };
+        const welcomeBtnClick = () => {
+
+            socket.emit("welcomeBtnClicked");
+
+        };
+
     </script>
-  </body>
+</body>
+
 </html>

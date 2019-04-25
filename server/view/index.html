@@ -1,16 +1,44 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Socket.IO whiteboard</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
 
-  <canvas class="display" ></canvas>
-  <canvas class="boardOne hidden"></canvas>
-    
-  <script src="/socket.io/socket.io.js"></script>    
-  <script src="main.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Socket.IO whiteboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <audio id="audio1">
+        <source src="https://mysound.cad.rit.edu/exhibit/animations/backgroundMusic/BackTrackOne.mp3">
+    </audio>
+    <audio id="audio2">
+        <source src="https://mysound.cad.rit.edu/exhibit/animations/backgroundMusic/BackTrackTwo.mp3">
+    </audio>
+    <audio id="audio3">
+        <source src="https://mysound.cad.rit.edu/exhibit/animations/backgroundMusic/BackTrackThree.mp3">
+    </audio>
+    <audio id="audio4">
+        <source src="https://mysound.cad.rit.edu/exhibit/animations/backgroundMusic/BackTrackFour.mp3">
+    </audio>
+    <video id="display1" class="display" width="1920" height="1080">
+        <source src="https://mysound.cad.rit.edu/exhibit/animations/display/displayOne.webm">
+    </video>
+    <video id="display3" class="display" width="1920" height="1080">
+        <source src="https://mysound.cad.rit.edu/exhibit/animations/display/displayOne.webm">
+    </video>
+    <video id="display4" class="display" width="1920" height="1080">
+        <source src="https://mysound.cad.rit.edu/exhibit/animations/display/displayOne.webm">
+    </video>
+    <video id="display5" class="display" width="1920" height="1080">
+        <source src="https://mysound.cad.rit.edu/exhibit/animations/display/displayOne.webm">
+    </video>
+    <video id="display6" class="display" width="1920" height="1080">;
+        <source src="https://mysound.cad.rit.edu/exhibit/animations/display/displayOne.webm">
+    </video>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="main.js"></script>
+    <script src="display.js"></script>
 </body>
+
 </html>

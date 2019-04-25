@@ -21,6 +21,7 @@ body {
     padding: 0;
     background-color: #303030;
     touch-action: none;
+    overflow: hidden;
 }
 
 /* welcome Page */
@@ -580,4 +581,16 @@ body {
     /* 1050 */
     top: 540px;
     pointer-events: none;
+}
+
+/* Index - Display */
+#display6{
+    filter: hue-rotate(310deg);
+    /*35, 90,275 */
+    z-index: 10;
+}
+.display{
+    position: absolute;
+    left: 0;
+    top: 0;
 }
