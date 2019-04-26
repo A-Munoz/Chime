@@ -13,7 +13,18 @@
     let audio = new Audio('https://mysound.cad.rit.edu/exhibit/animations/music/backgroundMusic/BackTrackOne.mp3');
     socket.on('songBackground', startSong);
     socket.on('draw', drawStoke);
-    // socket.on("sound", playSound(song));
+    socket.on("sound", (sound) => {
+        var song = new Audio(sound)
+        var playPromis = song.play();
+        if (playPromis !== undefined) {
+            playPromis.then((_) => {
+
+                })
+                .catch((error) => {
+
+                });
+        }
+    });
 
     function drawStoke() {
         if (limit <= 4) {
@@ -275,6 +286,19 @@
 
     function displayLimit() {
         limit = limit - 1;
+    };
+
+    function playSound(pSong) {
+        var sound = pSong
+        var playPromis = sound.play();
+        if (playPromis !== undefined) {
+            playPromis.then((_) => {
+
+                })
+                .catch((error) => {
+
+                });
+        }
     }
 
     const songEnded = () => {

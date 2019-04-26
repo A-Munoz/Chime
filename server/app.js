@@ -26,6 +26,9 @@ function onConnection(socket) {
     socket.on('draw', () => {
         socket.broadcast.emit('draw');
     });
+    socket.on('sound', (audio) => {
+        socket.broadcast.emit('sound', audio);
+    });
     socket.on('welcomeBtnClicked', (welcomeBtnClicked) => {
         if (welcomeBtnClicked === false) {
             socket.broadcast.emit('welcomeBtnClicked', welcomeBtnClicked);
