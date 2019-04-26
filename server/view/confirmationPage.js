@@ -1,16 +1,39 @@
 let counter = 0;
-let myTimer = setInterval(countdown, 1000);
+const myTimer = setInterval(countdown, 1000);
+
+const socket = io();
+const welcomeBtnClickedBoardCheck = false;
+const songFinishedBoardCheck = false;
+const goToPath = '/welcome';
+
+const urlParams = new URLSearchParams(window.location.search);
 
 function countdown() {
-  counter = counter + 1;
+  counter += 1;
   if (counter === 10) {
-    console.log("timeout");
+    socket.emit('welcomeBtnClicked', welcomeBtnClickedBoardCheck);
+    socket.emit('songFinished', songFinishedBoardCheck);
+    console.log('timeout');
     clearInterval(myTimer);
-    window.location.pathname = "/welcome";
+    console.dir(urlParams.get('boardOne'));
+    if (urlParams.get('boardOne') == 'true') {
+      console.log('board one called');
+      window.location.href = '/boardOne';
+    } else if (urlParams.get('boardTwo') == 'true') {
+      console.log('board two called');
+      window.location.href = '/welcome';
+    } else if (urlParams.get('boardThree') == 'true') {
+      console.log('board three called');
+      window.location.href = '/boardThree';
+    }
   }
 }
 
-window.onload = myTimer;
+window.onload = function () {
+  // prevent right click
+  document.addEventListener('contextmenu', event => event.preventDefault());
+  myTimer;
+};
 
 // var myVar = setInterval(myTimer, 1000);
 

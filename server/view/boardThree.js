@@ -1,30 +1,37 @@
-const colors = document.getElementsByTagName(`video`);
-const onSquareClicked = song => {
-  console.log("videos clicked");
-  console.log(song);
-  var audio = new Audio(song);
-  audio.play();
-};
+const colors = document.getElementsByTagName('video');
+const socket = io();
+let welcomeBtnClickedBoardCheck;
+let songFinishedBoardCheck;
 
-const beat1 = () => {
-  var src = $("#audio1").attr("src");
-  onSquareClicked(src);
-};
-const beat2 = () => {
-  var src = $("#audio2").attr("src");
-  onSquareClicked(src);
-};
-const beat3 = () => {
-  var src = $("#audio3").attr("src");
-  onSquareClicked(src);
-};
-const beat4 = () => {
-  var src = $("#audio4").attr("src");
-  onSquareClicked(src);
-};
-const beat5 = () => {
-  var src = $("#audio5").attr("src");
-  onSquareClicked(src);
+//
+window.onload = function () {
+  // prevent right click
+  document.addEventListener('contextmenu', event => event.preventDefault());
+  // welcome button clicked
+  // socket.emit("welcomeBtnClicked");
+  socket.on('welcomeBtnClicked', (welcomeBtnClicked) => {
+    console.log(`boardThree : ${welcomeBtnClicked}`);
+    welcomeBtnClickedBoardCheck = welcomeBtnClicked;
+    console.log(`welcome btn from sockets : ${welcomeBtnClicked}`);
+    // socket.broadcast.emit("welcomeBtnClicked", welcomeBtnClicked);
+    if (welcomeBtnClickedBoardCheck == false) {
+      document.getElementById('boardThreeBody').style.visibility = 'hidden';
+    } else {
+      document.getElementById('boardThreeBody').style.visibility = 'visible';
+    }
+  });
+
+  // music ended
+  // socket.emit("songFinished");
+  socket.on('songFinished', (songFinished) => {
+    console.log(`boardThree song : ${songFinished}`);
+    songFinishedBoardCheck = songFinished;
+    if (songFinishedBoardCheck == false) {
+      // do nothing
+    } else {
+      window.location.href = '/thankyou?boardThree=true';
+    }
+  });
 };
 
 for (let i = 0; i < colors.length; i++) {
@@ -34,9 +41,9 @@ for (let i = 0; i < colors.length; i++) {
     // x.setAttribute("src", "https://mysound.cad.rit.edu/exhibit/animations/music/blueOne.wav");
     // x.setAttribute("id", "audio1");
     // document.getElementById("v1").appendChild(x);
-    colors[i].addEventListener("click", function() {
-      var audio = new Audio(
-        "https://people.rit.edu/amm4833/exhibit/music/blueOne.wav"
+    colors[i].addEventListener('click', () => {
+      const audio = new Audio(
+        'https://mysound.cad.rit.edu/exhibit/animations/music/boardThreeMusic/1.wav',
       );
       audio.play();
     });
@@ -46,9 +53,9 @@ for (let i = 0; i < colors.length; i++) {
     // x.setAttribute("src", "https://mysound.cad.rit.edu/audioFiles/cork.mp3");
     // x.setAttribute("id", "audio2");
     // document.getElementById("v2").appendChild(x);
-    colors[i].addEventListener("click", function() {
-      var audio = new Audio(
-        "https://people.rit.edu/amm4833/exhibit/music/blueTwo.wav"
+    colors[i].addEventListener('click', () => {
+      const audio = new Audio(
+        'https://mysound.cad.rit.edu/exhibit/animations/music/boardThreeMusic/2.wav',
       );
       audio.play();
     });
@@ -58,9 +65,9 @@ for (let i = 0; i < colors.length; i++) {
     // x.setAttribute("src", "https://mysound.cad.rit.edu/audioFiles/coins.wav");
     // x.setAttribute("id", "audio3");
     // document.getElementById("v3").appendChild(x);
-    colors[i].addEventListener("click", function() {
-      var audio = new Audio(
-        "https://people.rit.edu/amm4833/exhibit/music/blueThree.wav"
+    colors[i].addEventListener('click', () => {
+      const audio = new Audio(
+        'https://mysound.cad.rit.edu/exhibit/animations/music/boardThreeMusic/3.wav',
       );
       audio.play();
     });
@@ -70,9 +77,9 @@ for (let i = 0; i < colors.length; i++) {
     // x.setAttribute("src", "https://mysound.cad.rit.edu/audioFiles/keys.wav");
     // x.setAttribute("id", "audio4");
     // document.getElementById("v4").appendChild(x);
-    colors[i].addEventListener("click", function() {
-      var audio = new Audio(
-        "https://people.rit.edu/amm4833/exhibit/music/blueFour.wav"
+    colors[i].addEventListener('click', () => {
+      const audio = new Audio(
+        'https://mysound.cad.rit.edu/exhibit/animations/music/boardThreeMusic/4.wav',
       );
       audio.play();
     });
@@ -82,9 +89,9 @@ for (let i = 0; i < colors.length; i++) {
     // x.setAttribute("src", "https://mysound.cad.rit.edu/audioFiles/laugh.wav");
     // x.setAttribute("id", "audio5");
     // document.getElementById("v5").appendChild(x);
-    colors[i].addEventListener("click", function() {
-      var audio = new Audio(
-        "https://people.rit.edu/amm4833/exhibit/music/greenOne.wav"
+    colors[i].addEventListener('click', () => {
+      const audio = new Audio(
+        'https://mysound.cad.rit.edu/exhibit/animations/music/boardThreeMusic/5.wav',
       );
       audio.play();
     });
@@ -94,9 +101,9 @@ for (let i = 0; i < colors.length; i++) {
     // x.setAttribute("src", "https://mysound.cad.rit.edu/audioFiles/laugh.wav");
     // x.setAttribute("id", "audio5");
     // document.getElementById("v5").appendChild(x);
-    colors[i].addEventListener("click", function() {
-      var audio = new Audio(
-        "https://people.rit.edu/amm4833/exhibit/music/greenTwo.wav"
+    colors[i].addEventListener('click', () => {
+      const audio = new Audio(
+        'https://mysound.cad.rit.edu/exhibit/animations/music/boardThreeMusic/6.wav',
       );
       audio.play();
     });
@@ -106,9 +113,9 @@ for (let i = 0; i < colors.length; i++) {
     // x.setAttribute("src", "https://mysound.cad.rit.edu/audioFiles/laugh.wav");
     // x.setAttribute("id", "audio5");
     // document.getElementById("v5").appendChild(x);
-    colors[i].addEventListener("click", function() {
-      var audio = new Audio(
-        "https://people.rit.edu/amm4833/exhibit/music/greenThree.wav"
+    colors[i].addEventListener('click', () => {
+      const audio = new Audio(
+        'https://mysound.cad.rit.edu/exhibit/animations/music/boardThreeMusic/7.wav',
       );
       audio.play();
     });
@@ -118,9 +125,9 @@ for (let i = 0; i < colors.length; i++) {
     // x.setAttribute("src", "https://mysound.cad.rit.edu/audioFiles/laugh.wav");
     // x.setAttribute("id", "audio5");
     // document.getElementById("v5").appendChild(x);
-    colors[i].addEventListener("click", function() {
-      var audio = new Audio(
-        "https://people.rit.edu/amm4833/exhibit/music/greenFour.wav"
+    colors[i].addEventListener('click', () => {
+      const audio = new Audio(
+        'https://mysound.cad.rit.edu/exhibit/animations/music/boardThreeMusic/8.wav',
       );
       audio.play();
     });
@@ -130,9 +137,9 @@ for (let i = 0; i < colors.length; i++) {
     // x.setAttribute("src", "https://mysound.cad.rit.edu/audioFiles/laugh.wav");
     // x.setAttribute("id", "audio5");
     // document.getElementById("v5").appendChild(x);
-    colors[i].addEventListener("click", function() {
-      var audio = new Audio(
-    "https://people.rit.edu/amm4833/exhibit/music/redOne.wav"
+    colors[i].addEventListener('click', () => {
+      const audio = new Audio(
+        'https://mysound.cad.rit.edu/exhibit/animations/music/boardThreeMusic/9.wav',
       );
       audio.play();
     });
@@ -142,9 +149,9 @@ for (let i = 0; i < colors.length; i++) {
     // x.setAttribute("src", "https://mysound.cad.rit.edu/audioFiles/laugh.wav");
     // x.setAttribute("id", "audio5");
     // document.getElementById("v5").appendChild(x);
-    colors[i].addEventListener("click", function() {
-      var audio = new Audio(
-        "https://people.rit.edu/amm4833/exhibit/music/redTwo.wav"
+    colors[i].addEventListener('click', () => {
+      const audio = new Audio(
+        'https://mysound.cad.rit.edu/exhibit/animations/music/boardThreeMusic/10.wav',
       );
       audio.play();
     });
@@ -154,9 +161,9 @@ for (let i = 0; i < colors.length; i++) {
     // x.setAttribute("src", "https://mysound.cad.rit.edu/audioFiles/laugh.wav");
     // x.setAttribute("id", "audio5");
     // document.getElementById("v5").appendChild(x);
-    colors[i].addEventListener("click", function() {
-      var audio = new Audio(
-        "https://people.rit.edu/amm4833/exhibit/music/redThree.wav"
+    colors[i].addEventListener('click', () => {
+      const audio = new Audio(
+        'https://mysound.cad.rit.edu/exhibit/animations/music/boardThreeMusic/11.wav',
       );
       audio.play();
     });
@@ -166,9 +173,9 @@ for (let i = 0; i < colors.length; i++) {
     // x.setAttribute("src", "https://mysound.cad.rit.edu/audioFiles/laugh.wav");
     // x.setAttribute("id", "audio5");
     // document.getElementById("v5").appendChild(x);
-    colors[i].addEventListener("click", function() {
-      var audio = new Audio(
-        "https://people.rit.edu/amm4833/exhibit/music/redFour.wav"
+    colors[i].addEventListener('click', () => {
+      const audio = new Audio(
+        'https://mysound.cad.rit.edu/exhibit/animations/music/boardThreeMusic/12.wav',
       );
       audio.play();
     });
@@ -178,9 +185,9 @@ for (let i = 0; i < colors.length; i++) {
     // x.setAttribute("src", "https://mysound.cad.rit.edu/audioFiles/laugh.wav");
     // x.setAttribute("id", "audio5");
     // document.getElementById("v5").appendChild(x);
-    colors[i].addEventListener("click", function() {
-      var audio = new Audio(
-        "https://people.rit.edu/amm4833/exhibit/music/yellowOne.wav"
+    colors[i].addEventListener('click', () => {
+      const audio = new Audio(
+        'https://mysound.cad.rit.edu/exhibit/animations/music/boardThreeMusic/13.wav',
       );
       audio.play();
     });
@@ -190,9 +197,9 @@ for (let i = 0; i < colors.length; i++) {
     // x.setAttribute("src", "https://mysound.cad.rit.edu/audioFiles/laugh.wav");
     // x.setAttribute("id", "audio5");
     // document.getElementById("v5").appendChild(x);
-    colors[i].addEventListener("click", function() {
-      var audio = new Audio(
-        "https://people.rit.edu/amm4833/exhibit/music/yellowTwo.wav"
+    colors[i].addEventListener('click', () => {
+      const audio = new Audio(
+        'https://mysound.cad.rit.edu/exhibit/animations/music/boardThreeMusic/14.wav',
       );
       audio.play();
     });
@@ -202,9 +209,9 @@ for (let i = 0; i < colors.length; i++) {
     // x.setAttribute("src", "https://mysound.cad.rit.edu/audioFiles/laugh.wav");
     // x.setAttribute("id", "audio5");
     // document.getElementById("v5").appendChild(x);
-    colors[i].addEventListener("click", function() {
-      var audio = new Audio(
-        "https://people.rit.edu/amm4833/exhibit/music/yellowThree.wav"
+    colors[i].addEventListener('click', () => {
+      const audio = new Audio(
+        'https://mysound.cad.rit.edu/exhibit/animations/music/boardThreeMusic/15.wav',
       );
       audio.play();
     });
@@ -214,9 +221,9 @@ for (let i = 0; i < colors.length; i++) {
     // x.setAttribute("src", "https://mysound.cad.rit.edu/audioFiles/laugh.wav");
     // x.setAttribute("id", "audio5");
     // document.getElementById("v5").appendChild(x);
-    colors[i].addEventListener("click", function() {
-      var audio = new Audio(
-        "https://people.rit.edu/amm4833/exhibit/music/yellowFour.wav"
+    colors[i].addEventListener('click', () => {
+      const audio = new Audio(
+        'https://mysound.cad.rit.edu/exhibit/animations/music/boardThreeMusic/16.wav',
       );
       audio.play();
     });

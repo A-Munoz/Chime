@@ -1,28 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <title>Socket.IO whiteboard</title>
     <link rel="stylesheet" href="style.css" />
-  </head>
+</head>
 
-  <body id="welcomeBody">
+<body id="welcomeBody">
     <div id="albumImg">
-      <img src="assets/ChimeAlbumLogo.svg" />
+        <img src="assets/ChimeAlbumLogo.svg" />
     </div>
 
     <div id="welcomeText">
-      <p>
-        This experience was made using the voices collected over the last 12
-        weeks from the RIT community and beyond. Let’s come together to
-        celebrate the harmony in togetherness.
-      </p>
+        <p>
+            This experience was made using the voices collected over the last 12
+            weeks from the RIT community and beyond. Let’s come together to
+            celebrate the harmony in togetherness.
+        </p>
     </div>
-    <form action="/boardOne" method="GET">
-      <button id="welcomeStartButton">Start</button>
+    <form action="/boardTwo" method="GET">
+        <button id="welcomeStartButton" onclick="welcomeBtnClick()">Start</button>
     </form>
 
     <script src="/socket.io/socket.io.js"></script>
     <!-- <script src="main.js"></script> -->
-  </body>
+    <script>
+        const socket = io();
+        let welcomeBtnClicked = false;
+        window.onload = function() {
+            //prevent right click
+            document.addEventListener("contextmenu", event =>
+                event.preventDefault()
+            );
+            //sockets
+            socket.emit("welcomeBtnClicked", welcomeBtnClicked);
+            socket.on("welcomeBtnClicked", function(welcomeBtnClick) {
+                console.log("welcomeBtnClick : " + welcomeBtnClick);
+            });
+        };
+
+        const welcomeBtnClick = () => {
+            welcomeBtnClicked = true;
+            socket.emit("welcomeBtnClicked", welcomeBtnClicked);
+            socket.on("welcomeBtnClicked", function(welcomeBtnClick) {
+                console.log("welcomeBtnClicked : " + welcomeBtnClick);
+            });
+        };
+
+    </script>
+</body>
+
 </html>

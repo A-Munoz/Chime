@@ -1,66 +1,283 @@
-"use strict";
-
 (function () {
     const socket = io();
-    var outputCanvas = document.getElementById('output'),
-        canvas = document.getElementById('output'),
-        output = outputCanvas.getContext('2d'),
-        bufferCanvas = document.getElementById('buffer'),
-        buffer = bufferCanvas.getContext('2d'),
-        video = document.getElementById('displayVid'),
-        width = window.innerWidth,
-        height = window.innerHeight,
-        interval;
-    const context = canvas.getContext("2d");
+    const songArray = ['1', '2', '3', '4'];
+    const strokeArray = ['1', '2', '3', '4', '5', '6'];
+    const hueArray = ['1', '2', '3', '4'];
+    let hueShift = hueArray.sort(rand);
+    let display = strokeArray.sort(rand);
+    let playlist = songArray.sort(rand);
+    let cSong = 0;
+    let cStroke = 0;
+    let cHue = 0;
+    let limit = 0;
+    let audio = new Audio('https://mysound.cad.rit.edu/exhibit/animations/music/backgroundMusic/BackTrackOne.mp3');
+    socket.on('songBackground', startSong);
+    socket.on('draw', drawStoke);
+    // socket.on("sound", playSound(song));
+
+    function drawStoke() {
+        if (limit <= 4) {
+            const c = display[cStroke];
+            let videoPlayer;
+
+            switch (c) {
+                case '1':
+                    videoPlayer = document.getElementById(
+                        'display1',
+                    );
+                    hueCall(videoPlayer);
+
+                    var playPromis = videoPlayer.play();
+                    if (playPromis !== undefined) {
+                        playPromis.then((_) => {
+
+                            })
+                            .catch((error) => {
+
+                            });
+                    }
+                    break;
+                case '2':
+                    videoPlayer = document.getElementById(
+                        'display2',
+                    );
+                    hueCall(videoPlayer);
+
+                    var playPromis = videoPlayer.play();
+
+                    if (playPromis !== undefined) {
+                        playPromis.then((_) => {
+
+                            })
+                            .catch((error) => {
+
+                            });
+                    }
+                    break;
+                case '3':
+                    videoPlayer = document.getElementById(
+                        'display3',
+                    );
+                    hueCall(videoPlayer);
+
+                    var playPromis = videoPlayer.play();
+                    if (playPromis !== undefined) {
+                        playPromis.then((_) => {
+
+                            })
+                            .catch((error) => {
+
+                            });
+                    }
+                    break;
+                case '4':
+                    videoPlayer = document.getElementById(
+                        'display4',
+                    );
+                    hueCall(videoPlayer);
+
+                    var playPromis = videoPlayer.play();
+                    if (playPromis !== undefined) {
+                        playPromis.then((_) => {
+
+                            })
+                            .catch((error) => {
+
+                            });
+                    }
+                    break;
+                case '5':
+                    videoPlayer = document.getElementById(
+                        'display5',
+                    );
+                    hueCall(videoPlayer);
+
+                    var playPromis = videoPlayer.play();
+                    if (playPromis !== undefined) {
+                        playPromis.then((_) => {
+
+                            })
+                            .catch((error) => {
+
+                            });
+                    }
+                    break;
+                case '6':
+                    videoPlayer = document.getElementById(
+                        'display6',
+                    );
+                    hueCall(videoPlayer);
+
+                    var playPromis = videoPlayer.play();
+                    if (playPromis !== undefined) {
+                        playPromis.then((_) => {
+
+                            })
+                            .catch((error) => {
+
+                            });
+                    }
+                    break;
+                default:
+                    videoPlayer = document.getElementById(
+                        'display1',
+                    );
+                    hueCall(videoPlayer);
 
 
-    socket.on("drawing", onDrawingEvent);
+                    var playPromis = videoPlayer.play();
+                    if (playPromis !== undefined) {
+                        playPromis.then((_) => {
+
+                            })
+                            .catch((error) => {
+
+                            });
+                    }
+                    break;
+            }
+            limit++;
+            videoPlayer.addEventListener('ended', displayLimit);
+            videoPlayer.addEventListener('ended', function () {
+                videoPlayer.load();
+            });
+            cStroke++;
+            if (cStroke >= display.length) {
+                cStroke = 0;
+                display = strokeArray.sort(rand);
+            }
+        }
+    }
 
 
-    function processFrame() {
-        buffer.drawImage(video, 0, 0);
+    function startSong() {
+        console.log(playlist);
+        const c = playlist[cSong];
+        console.log(playlist[cSong]);
+        switch (c) {
+            case '1':
+                audio = new Audio(
+                    'https://mysound.cad.rit.edu/exhibit/animations/music/backgroundMusic/BackTrackOne.mp3',
+                );
+                var playPromis = audio.play();
+                if (playPromis !== undefined) {
+                    playPromis.then((_) => {
 
-        // this can be done without alphaData, except in Firefox which doesn't like it when image is bigger than the canvas
-        var image = buffer.getImageData(0, 0, width, height),
-            imageData = image.data,
-            alphaData = buffer.getImageData(0, height, width, height).data;
+                        })
+                        .catch((error) => {
 
-        for (var i = 3, len = imageData.length; i < len; i = i + 4) {
-            imageData[i] = alphaData[i - 1];
+                        });
+                }
+                break;
+            case '2':
+                audio = new Audio(
+                    'https://mysound.cad.rit.edu/exhibit/animations/music/backgroundMusic/BackTrackTwo.mp3',
+                );
+                var playPromis = audio.play();
+                if (playPromis !== undefined) {
+                    playPromis.then((_) => {
+
+                        })
+                        .catch((error) => {
+
+                        });
+                }
+                break;
+            case '3':
+                audio = new Audio(
+                    'https://mysound.cad.rit.edu/exhibit/animations/music/backgroundMusic/BackTrackThree.mp3',
+                );
+                var playPromis = audio.play();
+                if (playPromis !== undefined) {
+                    playPromis.then((_) => {
+
+                        })
+                        .catch((error) => {
+
+                        });
+                }
+                break;
+            case '4':
+                audio = new Audio(
+                    'https://mysound.cad.rit.edu/exhibit/animations/music/backgroundMusic/BackTrackFour.mp3',
+                );
+                var playPromis = audio.play();
+                if (playPromis !== undefined) {
+                    playPromis.then((_) => {
+
+                        })
+                        .catch((error) => {
+
+                        });
+                }
+                break;
+            default:
+                audio = new Audio(
+                    'https://mysound.cad.rit.edu/exhibit/animations/music/backgroundMusic/BackTrackThree.mp3',
+                );
+                var playPromis = audio.play();
+                if (playPromis !== undefined) {
+                    playPromis.then((_) => {
+
+                        })
+                        .catch((error) => {
+
+                        });
+                }
+
+                break;
+        }
+        // audio.play();
+        cSong++;
+        if (cSong >= playlist.length) {
+            cSong = 0;
+            playlist = songArray.sort(rand);
+        }
+        audio.addEventListener('ended', songEnded);
+    };
+
+    function rand(a, b) {
+        return 0.5 - Math.random();
+    };
+
+    function hueCall(elem) {
+        /*35, 90,275 */
+        const c = hueShift[cHue];
+        switch (c) {
+            case '1':
+                elem.style.filter = "hue-rotate(35deg)";
+                elem.style.zIndex = 5;
+                break;
+            case '2':
+                elem.style.filter = "hue-rotate(90deg)";
+                elem.style.zIndex = 3;
+                break;
+            case '3':
+                elem.style.filter = "hue-rotate(275deg)";
+                elem.style.zIndex = 10;
+                break;
+            case '4':
+                elem.style.filter = "hue-rotate(0deg)";
+                elem.style.zIndex = 8;
+                break;
+            default:
+                elem.style.filter = "hue-rotate(0deg)";
+                elem.style.zIndex = 8;
+                break;
+        }
+        cHue++;
+        if (cHue >= hueShift.length) {
+            cHue = 0;
+            hueShift = hueArray.sort(rand);
         }
 
-        output.putImageData(image, 0, 0, 0, 0, width, height);
-        console.log(test);
+    };
+
+    function displayLimit() {
+        limit = limit - 1;
     }
 
-    // limit the number of events per second
-    function throttle(callback, delay) {
-        let previousCall = new Date().getTime();
-        return function () {
-            const time = new Date().getTime();
-
-            if (time - previousCall >= delay) {
-                previousCall = time;
-                callback.apply(null, arguments);
-            }
-        };
-    }
-
-    function onDrawingEvent(data) {
-        const w = canvas.width;
-        const h = canvas.height;
-        const ctx = canvas.getContext("2d");
-        ctx.fillStyle = data.color;
-        ctx.fillRect(20, 20, 150, 100);
-    }
-
-    // make the canvas fill its parent
-    function onResize() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
-    
-      window.addEventListener("resize", onResize, false);
-    onResize();
-
-})();
+    const songEnded = () => {
+        socket.emit('songFinished');
+    };
+}());
