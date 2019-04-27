@@ -36,6 +36,7 @@
                     videoPlayer = document.getElementById(
                         'display1',
                     );
+                    videoPlayer.setAttribute("onended", displayLimit);
                     hueCall(videoPlayer);
 
                     var playPromis = videoPlayer.play();
@@ -52,6 +53,7 @@
                     videoPlayer = document.getElementById(
                         'display2',
                     );
+                    videoPlayer.setAttribute("onended", displayLimit);
                     hueCall(videoPlayer);
 
                     var playPromis = videoPlayer.play();
@@ -69,6 +71,7 @@
                     videoPlayer = document.getElementById(
                         'display3',
                     );
+                    videoPlayer.setAttribute("onended", displayLimit);
                     hueCall(videoPlayer);
 
                     var playPromis = videoPlayer.play();
@@ -85,6 +88,7 @@
                     videoPlayer = document.getElementById(
                         'display4',
                     );
+                    videoPlayer.setAttribute("onended", displayLimit);
                     hueCall(videoPlayer);
 
                     var playPromis = videoPlayer.play();
@@ -101,6 +105,7 @@
                     videoPlayer = document.getElementById(
                         'display5',
                     );
+                    videoPlayer.setAttribute("onended", displayLimit);
                     hueCall(videoPlayer);
 
                     var playPromis = videoPlayer.play();
@@ -117,6 +122,7 @@
                     videoPlayer = document.getElementById(
                         'display6',
                     );
+                    videoPlayer.setAttribute("onended", displayLimit);
                     hueCall(videoPlayer);
 
                     var playPromis = videoPlayer.play();
@@ -133,6 +139,7 @@
                     videoPlayer = document.getElementById(
                         'display1',
                     );
+                    videoPlayer.setAttribute("onended", displayLimit);
                     hueCall(videoPlayer);
 
 
