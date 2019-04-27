@@ -150,7 +150,7 @@
             limit++;
             console.log(limit)
             console.log("limit");
-            videoPlayer.addEventListener('ended', displayLimit);
+            //videoPlayer.addEventListener('ended', displayLimit);
             videoPlayer.addEventListener('ended', function () {
                 videoPlayer.load();
             });
@@ -306,5 +306,6 @@
 
     const songEnded = () => {
         socket.emit('songFinished');
+        limit = 0;
     };
 }());
