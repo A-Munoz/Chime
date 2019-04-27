@@ -148,6 +148,8 @@
                     break;
             }
             limit++;
+            console.log(limit)
+            console.log("limit");
             videoPlayer.addEventListener('ended', displayLimit);
             videoPlayer.addEventListener('ended', function () {
                 videoPlayer.load();
@@ -286,6 +288,7 @@
 
     function displayLimit() {
         limit = limit - 1;
+        console.log(limit);
     };
 
     function playSound(pSong) {
