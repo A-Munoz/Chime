@@ -1,6 +1,6 @@
 (function () {
     const socket = io();
-    const songArray = ['1', '2', '3', '4'];
+    const songArray = ['1', '2', '4'];
     const strokeArray = ['1', '2', '3', '4', '5', '6'];
     const hueArray = ['1', '2', '3', '4'];
     let hueShift = hueArray.sort(rand);

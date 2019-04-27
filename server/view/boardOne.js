@@ -7,38 +7,31 @@ let songFinishedBoardCheck;
 window.onload = function () {
     // prevent right click
     document.addEventListener('contextmenu', event => event.preventDefault());
-    // welcome btn pressed
+    // welcome button clicked
     // socket.emit("welcomeBtnClicked");
     socket.on('welcomeBtnClicked', (welcomeBtnClicked) => {
-        console.log(`boardOne : ${welcomeBtnClicked}`);
+        console.log(`board one : ${welcomeBtnClicked}`);
         welcomeBtnClickedBoardCheck = welcomeBtnClicked;
         console.log(`welcome btn from sockets : ${welcomeBtnClicked}`);
+        // socket.broadcast.emit("welcomeBtnClicked", welcomeBtnClicked);
         if (welcomeBtnClickedBoardCheck == false) {
-            window.welcomeBtnClicked = false;
             document.getElementById('boardOneBody').style.visibility = 'hidden';
         } else {
-            window.welcomeBtnClicked = true;
             document.getElementById('boardOneBody').style.visibility = 'visible';
         }
     });
 
+    // music ended
     // socket.emit("songFinished");
     socket.on('songFinished', (songFinished) => {
         console.log(`boardOne song : ${songFinished}`);
         songFinishedBoardCheck = songFinished;
         if (songFinishedBoardCheck == false) {
-            // dont do anything
+            // do nothing
         } else {
-            // window.songFinished = true;
-            console.log('boardOne if song');
             window.location.href = '/thankyou?boardOne=true';
-            // window.songFinished = true;
-            // window.location.href =
-            //   "http://testing-chime.herokuapp.com/thankyou?boardOne=true";
         }
     });
-
-    console.log(`welcome btn log2 : ${window.welcomeBtnClicked}`);
 };
 
 // each audio element to play beat
@@ -139,7 +132,7 @@ for (let i = 0; i < colors.length; i++) {
                 );
                 audio.play();
                 socket.emit('draw');
-                socket.emit('sound', 'https://mysound.cad.rit.edu/exhibit/animations/music/boardOneMusic/7.wav);
+                socket.emit('sound', 'https://mysound.cad.rit.edu/exhibit/animations/music/boardOneMusic/7.wav');
                 });
         }
         if (i == 7) {
