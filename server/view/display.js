@@ -36,7 +36,7 @@
                     videoPlayer = document.getElementById(
                         'display1',
                     );
-                    videoPlayer.setAttribute("onended", displayLimit);
+                    //videoPlayer.setAttribute("onended", displayLimit);
                     hueCall(videoPlayer);
 
                     var playPromis = videoPlayer.play();
@@ -53,7 +53,7 @@
                     videoPlayer = document.getElementById(
                         'display2',
                     );
-                    videoPlayer.setAttribute("onended", displayLimit);
+                    //videoPlayer.setAttribute("onended", displayLimit);
                     hueCall(videoPlayer);
 
                     var playPromis = videoPlayer.play();
@@ -71,7 +71,7 @@
                     videoPlayer = document.getElementById(
                         'display3',
                     );
-                    videoPlayer.setAttribute("onended", displayLimit);
+                    //videoPlayer.setAttribute("onended", displayLimit);
                     hueCall(videoPlayer);
 
                     var playPromis = videoPlayer.play();
@@ -88,7 +88,7 @@
                     videoPlayer = document.getElementById(
                         'display4',
                     );
-                    videoPlayer.setAttribute("onended", displayLimit);
+                    //videoPlayer.setAttribute("onended", displayLimit);
                     hueCall(videoPlayer);
 
                     var playPromis = videoPlayer.play();
@@ -105,7 +105,7 @@
                     videoPlayer = document.getElementById(
                         'display5',
                     );
-                    videoPlayer.setAttribute("onended", displayLimit);
+                    //videoPlayer.setAttribute("onended", displayLimit);
                     hueCall(videoPlayer);
 
                     var playPromis = videoPlayer.play();
@@ -122,7 +122,7 @@
                     videoPlayer = document.getElementById(
                         'display6',
                     );
-                    videoPlayer.setAttribute("onended", displayLimit);
+                    //videoPlayer.setAttribute("onended", displayLimit);
                     hueCall(videoPlayer);
 
                     var playPromis = videoPlayer.play();
@@ -139,7 +139,7 @@
                     videoPlayer = document.getElementById(
                         'display1',
                     );
-                    videoPlayer.setAttribute("onended", displayLimit);
+                    //videoPlayer.setAttribute("onended", displayLimit);
                     hueCall(videoPlayer);
 
 
@@ -154,9 +154,9 @@
                     }
                     break;
             }
-            limit++;
-            console.log(limit)
-            console.log("limit");
+            //limit++;
+            //console.log(limit)
+            //console.log("limit");
             //videoPlayer.addEventListener('ended', displayLimit);
             videoPlayer.addEventListener('ended', function () {
                 videoPlayer.load();
